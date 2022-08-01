@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Math = TestNinja.Fundamentals.Math;
 
-namespace TestNinja.UnitTests;
+namespace TestNinja.UnitTests.Fundamentals;
 
 [TestFixture]
 public class MathTests

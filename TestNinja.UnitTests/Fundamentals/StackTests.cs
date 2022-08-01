@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using TestNinja.Mocking;
 
-namespace TestNinja.UnitTests;
+namespace TestNinja.UnitTests.Fundamentals;
 
 [TestFixture]
 public class StackTests
