@@ -4,18 +4,16 @@ namespace TestNinja.Mocking
 {
     public class EmployeeController
     {
-        private EmployeeContext _db;
+        private readonly IEmployeeRepository employeeRepository;
 
-        public EmployeeController()
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
-            _db = new EmployeeContext();
+            this.employeeRepository = employeeRepository;
         }
 
         public ActionResult DeleteEmployee(int id)
         {
-            var employee = _db.Employees.Find(id);
-            _db.Employees.Remove(employee);
-            _db.SaveChanges();
+            employeeRepository.Delete(id);
             return RedirectToAction("Employees");
         }
 
@@ -25,11 +23,15 @@ namespace TestNinja.Mocking
         }
     }
 
-    public class ActionResult { }
- 
-    public class RedirectResult : ActionResult { }
-    
-    public class EmployeeContext
+    public class ActionResult
+    {
+    }
+
+    public class RedirectResult : ActionResult
+    {
+    }
+
+    public class EmployeeContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
 
